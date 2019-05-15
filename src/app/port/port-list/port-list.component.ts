@@ -21,4 +21,9 @@ export class PortListComponent implements OnInit {
       .subscribe(ports => this.ports = ports)
   }
 
+  delete(id) {
+    this.portService.deletePort(id)
+      .subscribe(()=> this.getPorts())
+  }
+
 }

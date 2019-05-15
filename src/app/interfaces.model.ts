@@ -6,4 +6,7 @@ export class LocationType {
 
 export class Port {
   id: IdType;
+  name: string;
+  address: string;
+  country: string;
 }

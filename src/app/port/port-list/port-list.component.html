@@ -1,6 +1,27 @@
-<div class="list-group">
-  <div class="list-group-item" *ngFor="let port of ports">
-    <!-- {{ port.name }} [{{ locationType.code }}] -->
-    {{ port.name }}
-  </div>
+<div>
+  <a href="port-add"><button class="btn btn-primary" type="submit">Add</button></a>
 </div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let port of ports">
+      <th scope="row">{{port._id}}</th>
+      <td>{{port.name}}</td>
+      <td>{{port.address}}</td>
+      <td>{{port.country}}</td>
+      <td><button class="btn btn-primary" type="submit">Edit</button></td>
+      <td><button class="btn btn-primary" type="submit">View</button></td>
+      <td><button class="btn btn-primary" type="submit" (click)="delete(port._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -22,4 +22,12 @@ export class PortService extends BaseService {
         catchError(this.handleError<Port[]>('getPorts', []))
       );
   }
+
+  deletePort(id: string) {
+      return this.http.delete(`${this.apiUrl}/${id}/remove`)
+      .pipe(
+        tap(_ => this.log('deleted port')),
+        catchError(this.handleError<Port[]>('getPorts', []))
+      );
+  }
 }
