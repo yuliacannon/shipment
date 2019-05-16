@@ -13,6 +13,7 @@ import { ShipComponent } from './ship/ship.component';
 import { PortComponent } from './port/port.component';
 import { PierComponent } from './pier/pier.component';
 import { PortListComponent } from './port/port-list/port-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { PortListComponent } from './port/port-list/port-list.component';
     HttpClientModule,
     LocationTypeModule,
     AppRoutingModule,
-    PortModule
+    PortModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
