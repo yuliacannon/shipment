@@ -9,19 +9,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocationTypeModule } from './location-type/location-type.module';
 import { PortModule } from './port/port.module'
 import './types';
-import { ShipComponent } from './ship/ship.component';
-import { PortComponent } from './port/port.component';
-import { PierComponent } from './pier/pier.component';
-import { PortListComponent } from './port/port-list/port-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PierModule } from './pier/pier.module';
+import { ShipListComponent } from './ship/ship-list/ship-list.component';
+import { ShipModule } from './ship/ship.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    HomeComponent,
-    ShipComponent,
-    PierComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LocationTypeModule,
     AppRoutingModule,
     PortModule,
+    ShipModule,
     FormsModule,
+    PierModule,
     ReactiveFormsModule
   ],
   providers: [],
