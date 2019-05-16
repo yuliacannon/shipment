@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Port } from '../../interfaces.model'
 import { PortService } from '../port.service'
+import { Router } from '@angular/router';
+import { PortEditComponent } from '../port-edit/port-edit.component'
 
 @Component({
   selector: 'app-port-list',
@@ -9,8 +11,10 @@ import { PortService } from '../port.service'
 })
 export class PortListComponent implements OnInit {
   ports: Port[];
+  port
 
-  constructor(private portService: PortService) { }
+  constructor(private portService: PortService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getPorts();
@@ -24,6 +28,16 @@ export class PortListComponent implements OnInit {
   delete(id) {
     this.portService.deletePort(id)
       .subscribe(()=> this.getPorts())
+  }
+
+  getPort(id) {
+    this.portService.getPort(id)
+      .subscribe(port => {
+        this.port = port
+        this.router.navigate(['port-edit'])
+        console.log(port)
+      })
+      
   }
 
 }
