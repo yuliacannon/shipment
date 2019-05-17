@@ -1,3 +1,31 @@
-<p>
-  ship-list works!
-</p>
+<div>
+  <a href="ship-add"><button class="btn btn-primary" type="submit">Add</button></a>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Tonnage</th>
+      <th scope="col">Country</th>
+      <th scope="col">Pier</th>
+      <th scope="col">Submersion</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ship of ships">
+      <th scope="row">{{ship._id}}</th>
+      <td>{{ship.name}}</td>
+      <td>{{ship.tonnage}}</td>
+      <td>{{ship.country}}</td>
+      <td>{{ship.pier}}</td>
+      <td>{{ship.submersion}}</td>
+      <td><button class="btn btn-primary" type="submit" (click)="getShip(ship._id)">Edit</button></td>
+      <td><button class="btn btn-primary" type="submit">View</button></td>
+      <td><button class="btn btn-primary" type="submit" (click)="delete(ship._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
