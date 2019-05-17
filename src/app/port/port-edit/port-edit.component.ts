@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PortService } from '../port.service'
 import { NgForm } from '@angular/forms'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
+import { Port } from 'src/app/interfaces.model';
 
 @Component({
   selector: 'app-port-edit',
@@ -10,26 +12,33 @@ import { Router } from '@angular/router';
 })
 
 export class PortEditComponent implements OnInit {
-  sub 
+  name = 'sss';
+  address;
+  country;
 
   constructor(private portService: PortService,
-    private router: Router) { 
-      this.sub = this.portService.getPortValue()
-      .subscribe(port => this.sub = port)
-      console.log('syb',this.sub)
+    private route: ActivatedRoute, private router: Router) { 
+      // this.sub = this.portService.getPortValue()
+      // .subscribe(port => this.sub = port)
+      // console.log('syb',this.sub)
     }  
 
     ngOnDestroy() {
-      this.sub.unsubscribe();
+      //this.sub.unsubscribe();
     }
   ngOnInit() {
+    
+    this.portService.getPort(this.route.snapshot.params.id)
+      .subscribe((res: Port) => {
+        this.name = res.name;
+        this.address = res.address;
+        this.country = res.country;
+
+      });
   }
 
   edit(f: NgForm) {
-    console.log('fdsgb',f)
-    const port = JSON.stringify(f.value)
-    this.portService.editPort(f.value._id, port)
+    this.portService.editPort(this.route.snapshot.params.id, f.value)
       .subscribe(() => this.router.navigate(['ports-list']))
   }
-
 }

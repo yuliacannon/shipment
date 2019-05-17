@@ -27,7 +27,7 @@ const routes: Routes = [
     component: PortAddComponent
   },
   {
-    path: 'port-edit',
+    path: 'port-edit/:id',
     component: PortEditComponent
   },
   {

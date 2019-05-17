@@ -1,15 +1,15 @@
 <form (ngSubmit)="edit(f)" #f="ngForm">
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" ngModel id="name" name="name" placeholder="Enter name">
+    <input type="text" class="form-control" [(ngModel)]="name" id="name" name="name" placeholder="Enter name">
   </div>
   <div class="form-group">
     <label for="address">Address</label>
-    <input type="text" class="form-control" ngModel id="address" name="address" placeholder="Address">
+    <input type="text" class="form-control" [(ngModel)]="address" id="address" name="address" placeholder="Address">
   </div>
   <div class="form-group">
     <label for="country">Country</label>
-    <input type="text" class="form-control" ngModel id="country" name="country" placeholder="Country">
+    <input type="text" class="form-control" [(ngModel)]="country" id="country" name="country" placeholder="Country">
   </div>
   <button type="submit" class="btn btn-primary">Save</button>
 </form>

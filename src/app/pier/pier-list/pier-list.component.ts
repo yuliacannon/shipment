@@ -21,10 +21,10 @@ export class PierListComponent implements OnInit {
       .subscribe(piers => this.piers = piers)
   }
 
-  // delete(id) {
-  //   this.portService.deletePort(id)
-  //     .subscribe(()=> this.getPorts())
-  // }
+  delete(id) {
+    this.pierService.deletePier(id)
+      .subscribe(()=> this.getPiers())
+  }
 
   // getPort(id) {
   //   this.portService.getPort(id)

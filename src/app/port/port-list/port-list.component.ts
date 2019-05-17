@@ -30,13 +30,14 @@ export class PortListComponent implements OnInit {
       .subscribe(()=> this.getPorts())
   }
 
-  getPort(id) {
-    this.portService.getPort(id)
-      .subscribe(port => {
-        this.port = port
-        this.router.navigate(['port-edit'])
-        console.log(port)
-      })
+  editPort(id) {
+    this.router.navigate([`/port-edit/${id}`]);
+    // this.portService.getPort(id)
+    //   .subscribe(port => {
+    //     //this.port = port
+    //    // this.router.navigate(['port-edit'])
+    //     console.log(port)
+    //   })
       
   }
 

@@ -32,10 +32,4 @@ export class PierAddComponent implements OnInit {
     this.pierService.addPier(pier)
       .subscribe(() => this.router.navigate(['piers-list']))
   }
-
-//   compareFn(compared1: { id: number }, compared2: { id: number }) {
-
-//     return compared1 && compared2 ? compared1.id === compared2.id : compared1 === compared2;
-//  }
-
 }

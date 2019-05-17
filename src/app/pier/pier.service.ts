@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap, filter } from 'rxjs/operators';
-import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { BaseService } from '../base-service';
 import { Pier } from '../interfaces.model'
 
@@ -30,13 +30,13 @@ export class PierService extends BaseService {
       );
   }
 
-//   deletePort(id: string) {
-//       return this.http.delete(`${this.apiUrl}/${id}/remove`)
-//       .pipe(
-//         tap(_ => this.log('deleted port')),
-//         catchError(this.handleError<Port[]>('deletePort', []))
-//       );
-//   }
+  deletePier(id: string) {
+      return this.http.delete(`${this.apiUrl}/${id}/remove`)
+      .pipe(
+        tap(_ => this.log('deleted pier')),
+        catchError(this.handleError<Pier[]>('deletePier', []))
+      );
+  }
 
   addPier(pier): Observable<Pier> {
     return this.http.post(`${this.apiUrl}/add`, pier, httpOptions)
@@ -45,29 +45,4 @@ export class PierService extends BaseService {
       catchError(this.handleError('addPier', pier))
     );
   }
-
-//   getPort(id: string) {
-//     return this.http.get(`${this.apiUrl}/${id}`)
-//     .pipe(
-//       tap(_ => this.log('get port')),
-//       catchError(this.handleError('getPort'))
-//     );
-//   }
-
-//   editPort(id: string, data) {
-//     return this.http.put(`${this.apiUrl}/${id}/edit`, data)
-//     .pipe(
-//       tap(_ => this.log('edit port')),
-//       catchError(this.handleError('editPort'))
-//     );
-//   }
-
-//   getPortValue(): Observable<Port> {
-//     return this.port.asObservable();
-//  }
-
-//  updatePortValue(port: Port) {
-//   this.port.next(port);
-// }
- 
 }
