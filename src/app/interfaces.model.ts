@@ -10,3 +10,10 @@ export class Port {
   address: string;
   country: string;
 }
+
+export class Pier {
+  id?: IdType;
+  port: string;
+  maxAmount: number;
+  minSubmersion: number;
+}
