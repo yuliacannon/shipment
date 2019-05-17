@@ -16,10 +16,10 @@
   <tbody>
     <tr *ngFor="let pier of piers">
       <th scope="row">{{pier._id}}</th>
-      <td>{{pier.port}}</td>
+      <td>{{pier.port.name}}</td>
       <td>{{pier.maxAmount}}</td>
       <td>{{pier.minSubmersion}}</td>
-      <td><button class="btn btn-primary" type="submit" (click)="getPier(pier._id)">Edit</button></td>
+      <td><button class="btn btn-primary" type="submit" (click)="editPier(pier._id)">Edit</button></td>
       <td><button class="btn btn-primary" type="submit">View</button></td>
       <td><button class="btn btn-primary" type="submit" (click)="delete(pier._id)">Delete</button></td>
     </tr>

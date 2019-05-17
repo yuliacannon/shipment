@@ -1,3 +1,17 @@
-<p>
-  pier-edit works!
-</p>
+<form (ngSubmit)="edit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="port_id">Port</label>
+  <select id='port_id' name='port'  [(ngModel)]='port' class='form-control' >
+      <option [ngValue]="port._id" *ngFor='let port of ports'>{{port.name}}</option>
+  </select>
+  </div>
+  <div class="form-group">
+    <label for="maxAmount">Max Amount</label>
+    <input type="text" class="form-control" [(ngModel)]="maxAmount" id="maxAmount" name="maxAmount" placeholder="maxAmount">
+  </div>
+  <div class="form-group">
+    <label for="minSubmersion">Min Submersion</label>
+    <input type="text" class="form-control" [(ngModel)]="minSubmersion" id="minSubmersion" name="minSubmersion" placeholder="minSubmersion">
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>

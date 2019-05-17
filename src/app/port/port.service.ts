@@ -62,12 +62,12 @@ export class PortService extends BaseService {
     );
   }
 
-  getPortValue(): Observable<Port> {
-    return this.port.asObservable();
- }
+//   getPortValue(): Observable<Port> {
+//     return this.port.asObservable();
+//  }
 
- updatePortValue(port: Port) {
-  this.port.next(port);
-}
+//  updatePortValue(port: Port) {
+//   this.port.next(port);
+// }
  
 }

@@ -45,4 +45,20 @@ export class PierService extends BaseService {
       catchError(this.handleError('addPier', pier))
     );
   }
+
+  getPier(id: string) {
+    return this.http.get(`${this.apiUrl}/${id}`)
+    .pipe(
+      tap(_ => this.log('get pier')),
+      catchError(this.handleError('getPier'))
+    );
+  }
+
+  editPier(id: string, data) {
+    return this.http.put(`${this.apiUrl}/${id}/edit`, data)
+    .pipe(
+      tap(_ => this.log('edit pier')),
+      catchError(this.handleError('editPier'))
+    );
+  }
 }

@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PortService } from '../port.service'
 import { NgForm } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
 import { Port } from 'src/app/interfaces.model';
 
 @Component({
@@ -12,28 +11,20 @@ import { Port } from 'src/app/interfaces.model';
 })
 
 export class PortEditComponent implements OnInit {
-  name = 'sss';
+  name;
   address;
   country;
 
   constructor(private portService: PortService,
-    private route: ActivatedRoute, private router: Router) { 
-      // this.sub = this.portService.getPortValue()
-      // .subscribe(port => this.sub = port)
-      // console.log('syb',this.sub)
+    private route: ActivatedRoute, private router: Router) {
     }  
 
-    ngOnDestroy() {
-      //this.sub.unsubscribe();
-    }
   ngOnInit() {
-    
     this.portService.getPort(this.route.snapshot.params.id)
       .subscribe((res: Port) => {
         this.name = res.name;
         this.address = res.address;
         this.country = res.country;
-
       });
   }
 

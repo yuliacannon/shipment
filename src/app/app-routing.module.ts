@@ -47,11 +47,11 @@ const routes: Routes = [
     component: ShipAddComponent
   },
   {
-    path: 'pier-edit',
+    path: 'pier-edit/:id',
     component: PierEditComponent
   },
   {
-    path: 'ship-edit',
+    path: 'ship-edit/:id',
     component: ShipEditComponent
   },
   {
