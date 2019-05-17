@@ -1,3 +1,27 @@
-<p>
-  pier-list works!
-</p>
+<div>
+  <a href="pier-add"><button class="btn btn-primary" type="submit">Add</button></a>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pier of piers">
+      <th scope="row">{{pier._id}}</th>
+      <td>{{pier.port}}</td>
+      <td>{{pier.maxAmount}}</td>
+      <td>{{pier.minSubmersion}}</td>
+      <td><button class="btn btn-primary" type="submit" (click)="getPier(pier._id)">Edit</button></td>
+      <td><button class="btn btn-primary" type="submit">View</button></td>
+      <td><button class="btn btn-primary" type="submit" (click)="delete(pier._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
