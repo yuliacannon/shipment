@@ -31,15 +31,4 @@ export class PierListComponent implements OnInit {
   editPier(id) {
     this.router.navigate([`/pier-edit/${id}`]);
   }
-
-  // getPort(id) {
-  //   this.portService.getPort(id)
-  //     .subscribe(port => {
-  //       this.port = port
-  //       this.router.navigate(['port-edit'])
-  //       console.log(port)
-  //     })
-      
-  // }
-
 }

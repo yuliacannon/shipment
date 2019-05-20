@@ -28,7 +28,6 @@ export class PierAddComponent implements OnInit {
 
   add(f: NgForm) {
     const pier = JSON.stringify(f.value)
-    console.log(pier)
     this.pierService.addPier(pier)
       .subscribe(() => this.router.navigate(['piers-list']))
   }

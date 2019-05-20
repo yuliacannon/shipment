@@ -11,3 +11,12 @@ export class Pier {
   maxAmount: number;
   minSubmersion: number;
 }
+
+export class Ship {
+  id?: IdType;
+  pier: any;
+  name: string;
+  tonnage: number;
+  country: number;
+  submersion: number;
+}

@@ -1,3 +1,25 @@
-<p>
-  ship-edit works!
-</p>
+<form (ngSubmit)="edit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="pier">Pier</label>
+  <select id='pier' class='form-control' [(ngModel)]='pier' name='pier'>
+      <option [ngValue]="pier._id"  selected='pier'  *ngFor='let pier of piers'>{{pier._id}}</option>
+  </select>
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" [(ngModel)]="name" id="name" name="name" placeholder="name">
+  </div>
+  <div class="form-group">
+    <label for="tonnage">Tonnage</label>
+    <input type="text" class="form-control" [(ngModel)]="tonnage" id="tonnage" name="tonnage" placeholder="tonnage">
+  </div>
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input type="text" class="form-control" [(ngModel)]="country" id="country" name="country" placeholder="country">
+  </div>
+  <div class="form-group">
+    <label for="submersion">Submersion</label>
+    <input type="text" class="form-control" [(ngModel)]="submersion" id="submersion" name="submersion" placeholder="submersion">
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
