@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './http-errors/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationTypeModule } from './location-type/location-type.module';
 import { PortModule } from './port/port.module'
 import './types';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PierModule } from './pier/pier.module';
-import { ShipListComponent } from './ship/ship-list/ship-list.component';
 import { ShipModule } from './ship/ship.module';
 
 @NgModule({
@@ -23,7 +21,6 @@ import { ShipModule } from './ship/ship.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    LocationTypeModule,
     AppRoutingModule,
     PortModule,
     ShipModule,

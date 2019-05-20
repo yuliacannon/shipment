@@ -1,8 +1,8 @@
 <form (ngSubmit)="edit(f)" #f="ngForm">
   <div class="form-group">
-    <label for="port_id">Port</label>
-  <select id='port_id' name='port'  [(ngModel)]='port' class='form-control' >
-      <option [ngValue]="port._id" *ngFor='let port of ports'>{{port.name}}</option>
+    <label for="port">Port</label>
+  <select id='port' class='form-control' [(ngModel)]='port' name='port'>
+      <option [ngValue]="port._id"  selected='port'  *ngFor='let port of ports'>{{port.name}}</option>
   </select>
   </div>
   <div class="form-group">

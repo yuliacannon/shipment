@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PierService } from '../pier.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pier-list',
@@ -10,7 +11,8 @@ export class PierListComponent implements OnInit {
   pier
   piers
 
-  constructor(private pierService: PierService) { }
+  constructor(private pierService: PierService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getPiers();
