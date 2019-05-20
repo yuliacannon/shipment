@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { BaseService } from '../base-service';
@@ -26,7 +26,7 @@ export class PierService extends BaseService {
     return this.http.get<Pier[]>(`${this.apiUrl}/list`)
       .pipe(
         tap(_ => this.log('fetched piers')),
-        catchError(this.handleError<Pier[]>('getPiers', []))
+        catchError(this.handleErrorC)
       );
   }
 
@@ -34,15 +34,15 @@ export class PierService extends BaseService {
       return this.http.delete(`${this.apiUrl}/${id}/remove`)
       .pipe(
         tap(_ => this.log('deleted pier')),
-        catchError(this.handleError<Pier[]>('deletePier', []))
+        catchError(this.handleErrorC)
       );
   }
 
-  addPier(pier): Observable<Pier> {
+  addPier(pier) {
     return this.http.post(`${this.apiUrl}/add`, pier, httpOptions)
     .pipe(
       tap(_ => this.log('added pier')),
-      catchError(this.handleError('addPier', pier))
+      catchError(this.handleErrorC)
     );
   }
 
@@ -50,7 +50,7 @@ export class PierService extends BaseService {
     return this.http.get(`${this.apiUrl}/${id}`)
     .pipe(
       tap(_ => this.log('get pier')),
-      catchError(this.handleError('getPier'))
+      catchError(this.handleErrorC)
     );
   }
 
@@ -58,7 +58,21 @@ export class PierService extends BaseService {
     return this.http.put(`${this.apiUrl}/${id}/edit`, data)
     .pipe(
       tap(_ => this.log('edit pier')),
-      catchError(this.handleError('editPier'))
+      catchError(this.handleErrorC)
     );
+  }
+
+  handleErrorC(error) {
+    console.log(error.error)
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error: ${error.error.error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 }

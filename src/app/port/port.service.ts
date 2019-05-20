@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap, filter } from 'rxjs/operators';
-import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { BaseService } from '../base-service';
 import { Port } from '../interfaces.model'
 
@@ -26,7 +26,7 @@ export class PortService extends BaseService {
     return this.http.get<Port[]>(`${this.apiUrl}/list`)
       .pipe(
         tap(_ => this.log('fetched ports')),
-        catchError(this.handleError<Port[]>('getPorts', []))
+        catchError(this.handleErrorC)
       );
   }
 
@@ -34,15 +34,15 @@ export class PortService extends BaseService {
       return this.http.delete(`${this.apiUrl}/${id}/remove`)
       .pipe(
         tap(_ => this.log('deleted port')),
-        catchError(this.handleError<Port[]>('deletePort', []))
+        catchError(this.handleErrorC)
       );
   }
 
-  addPort(port): Observable<Port> {
+  addPort(port){
     return this.http.post(`${this.apiUrl}/add`, port, httpOptions)
     .pipe(
       tap(_ => this.log('added port')),
-      catchError(this.handleError('addPort', port))
+      catchError(this.handleErrorC)
     );
   }
 
@@ -50,7 +50,7 @@ export class PortService extends BaseService {
     return this.http.get(`${this.apiUrl}/${id}`)
     .pipe(
       tap(_ => this.log('get port')),
-      catchError(this.handleError('getPort'))
+      catchError(this.handleErrorC)
     );
   }
 
@@ -58,16 +58,22 @@ export class PortService extends BaseService {
     return this.http.put(`${this.apiUrl}/${id}/edit`, data)
     .pipe(
       tap(_ => this.log('edit port')),
-      catchError(this.handleError('editPort'))
+      catchError(this.handleErrorC)
     );
   }
 
-//   getPortValue(): Observable<Port> {
-//     return this.port.asObservable();
-//  }
-
-//  updatePortValue(port: Port) {
-//   this.port.next(port);
-// }
+  handleErrorC(error) {
+    console.log(error.error)
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error: ${error.error.error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
+  }
  
 }
