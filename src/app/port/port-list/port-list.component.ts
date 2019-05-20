@@ -32,4 +32,8 @@ export class PortListComponent implements OnInit {
     this.router.navigate([`/port-edit/${id}`]);
   }
 
+  view(id) {
+    this.router.navigate([`/piers-list/${id}`]);
+  }
+
 }

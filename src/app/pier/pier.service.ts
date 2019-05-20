@@ -22,8 +22,8 @@ export class PierService extends BaseService {
     this.apiUrl += '/pier';
   }
 
-  getPiers(): Observable<Pier[]> {
-    return this.http.get<Pier[]>(`${this.apiUrl}/list`)
+  getPiers(portId = ''): Observable<Pier[]> {
+    return this.http.get<Pier[]>(`${this.apiUrl}/list/${portId}`)
       .pipe(
         tap(_ => this.log('fetched piers')),
         catchError(this.handleErrorC)

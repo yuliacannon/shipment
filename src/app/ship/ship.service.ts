@@ -21,8 +21,8 @@ export class ShipService extends BaseService {
     this.apiUrl += '/ship';
   }
 
-  getShips(): Observable<Ship[]> {
-    return this.http.get<Ship[]>(`${this.apiUrl}/list`)
+  getShips(pierId = ''): Observable<Ship[]> {
+    return this.http.get<Ship[]>(`${this.apiUrl}/list/${pierId}`)
       .pipe(
         tap(_ => this.log('fetched ships')),
         catchError(this.handleErrorC)

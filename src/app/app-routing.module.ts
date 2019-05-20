@@ -35,7 +35,15 @@ const routes: Routes = [
     component: ShipListComponent
   },
   {
+    path: 'ships-list/:id',
+    component: ShipListComponent
+  },
+  {
     path: 'piers-list',
+    component: PierListComponent
+  },
+  {
+    path: 'piers-list/:id',
     component: PierListComponent
   },
   {

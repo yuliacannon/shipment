@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PierService } from '../pier.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pier-list',
@@ -12,14 +12,15 @@ export class PierListComponent implements OnInit {
   piers
 
   constructor(private pierService: PierService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getPiers();
   }
 
   getPiers() {
-    this.pierService.getPiers()
+    this.pierService.getPiers(this.route.snapshot.params.id)
       .subscribe(piers => this.piers = piers)
   }
 
@@ -32,14 +33,7 @@ export class PierListComponent implements OnInit {
     this.router.navigate([`/pier-edit/${id}`]);
   }
 
-  // getPort(id) {
-  //   this.portService.getPort(id)
-  //     .subscribe(port => {
-  //       this.port = port
-  //       this.router.navigate(['port-edit'])
-  //       console.log(port)
-  //     })
-      
-  // }
-
+  view(id) {
+    this.router.navigate([`/ships-list/${id}`]);
+  }
 }

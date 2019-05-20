@@ -20,7 +20,7 @@
       <td>{{pier.maxAmount}}</td>
       <td>{{pier.minSubmersion}}</td>
       <td><button class="btn btn-primary" type="submit" (click)="editPier(pier._id)">Edit</button></td>
-      <td><button class="btn btn-primary" type="submit">View</button></td>
+      <td><button class="btn btn-primary" type="submit" (click)="view(pier._id)">View</button></td>
       <td><button class="btn btn-primary" type="submit" (click)="delete(pier._id)">Delete</button></td>
     </tr>
   </tbody>

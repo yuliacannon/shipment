@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShipService } from '../ship.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ship-list',
@@ -12,14 +12,15 @@ export class ShipListComponent implements OnInit {
   ships
 
   constructor(private shipService: ShipService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getShips();
   }
 
   getShips() {
-    this.shipService.getShips()
+    this.shipService.getShips(this.route.snapshot.params.id)
       .subscribe(ships => this.ships = ships)
   }
 
