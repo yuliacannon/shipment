@@ -62,6 +62,14 @@ export class PierService extends BaseService {
     );
   }
 
+  getPiersByName(value: string) {
+    return this.http.get<Pier[]>(`${this.apiUrl}/list?value=${value}`)
+      .pipe(
+        tap(_ => this.log('fetched piers')),
+        catchError(this.handleErrorC)
+      );
+  }
+
   handleErrorC(error) {
     console.log(error.error)
     let errorMessage = '';
